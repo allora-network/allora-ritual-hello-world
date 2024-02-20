@@ -25,14 +25,25 @@
   "forward_stats": true,
   "containers": [
     {
-      "id": "hello-world",
-      "image": "ritualnetwork/hello-world-infernet:latest",
+      "id": "allora-head-node",
+      "image": "ghcr.io/allora-network/allora-inference-base_head:latest",
       "external": true,
-      "port": "3000",
+      "port": "8082",
       "allowed_delegate_addresses": [],
       "allowed_addresses": [],
       "allowed_ips": [],
-      "command": "--bind=0.0.0.0:3000 --workers=2",
+      "command": "--peer-db /tmp/peerdb --function-db /tmp/func-db --role head --rest-api :8082",
+      "env": {}
+    },
+    {
+      "id": "allora-worker-node",
+      "image": "ghcr.io/allora-network/allora-inference-base_worker:latest",
+      "external": true,
+      "port": "9542",
+      "allowed_delegate_addresses": [],
+      "allowed_addresses": [],
+      "allowed_ips": [],
+      "command": "--peer-db /tmp/peerdb --function-db /tmp/func-db --role worker --runtime-path=/app/runtime --runtime-cli=bls-runtime",
       "env": {}
     },
     {
