@@ -32,10 +32,10 @@ First, ensure that the docker daemon is running.
 Then, from the top-level project directory, Run the following make command:
 
 ```
-project=hello-world make deploy-container
+project=allora-infernet make deploy-container
 ```
 
-This will deploy an infernet node along with the `hello-world` image.
+This will deploy an infernet node along with the `allora-infernet` image.
 
 ### Creating an off-chain job through the API
 
@@ -44,7 +44,7 @@ You can create an off-chain job by posting to the `node` directly.
 ```bash
 curl -X POST http://127.0.0.1:4000/api/jobs \
      -H "Content-Type: application/json" \
-     -d '{"containers":["hello-world"], "data": {"some": "input"}}'
+     -d '{"containers":["allora-infernet"], "data": {"some": "input"}}'
 # returns
 {"id":"d5281dd5-c4f4-4523-a9c2-266398e06007"}
 ``` 
@@ -58,16 +58,7 @@ You can check the status of a job like so:
 ```bash
 curl -X GET http://127.0.0.1:4000/api/jobs?id=d5281dd5-c4f4-4523-a9c2-266398e06007
 # returns
-[{"id":"d5281dd5-c4f4-4523-a9c2-266398e06007", "result":{"container":"hello-world","output": {"output":"hello, world!, your input was: {'source': 1, 'data': {'some': 'input'}}"}} ,"status":"success"}]
-```
-
-### Configuration
-
-This project already comes with a pre-filled config file. The config
-file for the hello-world project is located [here](projects/hello-world/container/config.json):
-
-```bash
-projects/hello-world/config.json
+[{"id":"d5281dd5-c4f4-4523-a9c2-266398e06007","result":{"container":"allora-infernet","output":{"output":"hello, world!, your input was: {'source': 1, 'data': {'some': 'input'}}","response":"{\"code\":\"200\",\"request_id\":\"f0660992-1be1-49d4-bc14-4c995f6f66e1\",\"results\":[{\"result\":{\"stdout\":\"Hello, world!\\n\",\"stderr\":\"\",\"exit_code\":0},\"peers\":[\"12D3KooWQrN5U3BApv4JYjE5HyKXFKkRF2U8c5FgK3zMPjzkZTpQ\"],\"frequency\":100}],\"cluster\":{\"peers\":[\"12D3KooWQrN5U3BApv4JYjE5HyKXFKkRF2U8c5FgK3zMPjzkZTpQ\"]}}\n"}},"status":"success"}]
 ```
 
 ## Requesting an on-chain job
@@ -89,7 +80,7 @@ registered itself to listen to on-chain subscription events.
 This step is similar to the section above:
 
 ```bash
-project=hello-world make deploy-container
+project=allora-infernet make deploy-container
 ```
 
 In another terminal, run `docker container ls`, you should see something like this
@@ -119,7 +110,7 @@ a new terminal, run `docker logs -f anvil-node`.
 **Deploying the contracts**: In another terminal, run the following command:
 
 ```bash
-project=hello-world make deploy-contracts
+project=allora-infernet make deploy-contracts
 ```
 
 You should be able to see the following logs in the anvil logs:
@@ -149,7 +140,7 @@ That's the address of the `SaysGM` contract.
 Now, let's call the contract. In the same terminal, run the following command:
 
 ```bash
-project=hello-world make call-contract
+project=allora-infernet make call-contract
 ```
 
 You should first see that a transaction was sent to the `SaysGm` contract:
