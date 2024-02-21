@@ -57,7 +57,6 @@ services:
     depends_on:
       - allora-head
     stop_grace_period: 1m
-    user: 0:0
     volumes:
       - type: bind
         source: ../testkeys/ident2/
