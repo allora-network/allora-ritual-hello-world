@@ -1,5 +1,4 @@
-DOCKER_ORG := ritualnetwork
-TAG := $(DOCKER_ORG)/hello-world-infernet:latest
+TAG := allora-infernet:latest
 
 .phony: build run publish
 

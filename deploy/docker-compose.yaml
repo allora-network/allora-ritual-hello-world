@@ -21,6 +21,59 @@ services:
       - "host.docker.internal:host-gateway"
     stop_grace_period: 1m
 
+  allora-head:
+    image: ghcr.io/allora-network/allora-inference-base_head:latest
+    platform: linux/amd64
+    ports:
+      - "0.0.0.0:8081:8081"
+    networks:
+      - network
+    restart:
+      on-failure
+    stop_grace_period: 1m
+    volumes:
+      - type: bind
+        source: ../testkeys/ident1/
+        target: /data/keys
+        read_only: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: [
+      "--port", "9527", 
+      "--peer-db", "/tmp/peerdb", 
+      "--function-db", "/tmp/func-db", 
+      "--role", "head", 
+      "--rest-api", ":8081",
+      "--private-key",              "/data/keys/priv.bin",
+    ]
+
+  allora-worker:
+    image: ghcr.io/allora-network/allora-inference-base_worker:latest
+    platform: linux/amd64
+    networks:
+      - network
+    restart:
+      on-failure
+    depends_on:
+      - allora-head
+    stop_grace_period: 1m
+    user: 0:0
+    volumes:
+      - type: bind
+        source: ../testkeys/ident2/
+        target: /data/keys
+        read_only: true
+    command: [ 
+      "--port",                     "9527", 
+      "--peer-db",                  "/tmp/peerdb", 
+      "--function-db",              "/tmp/func-db", 
+      "--role",                     "worker", 
+      "--runtime-path",             "/app/runtime", 
+      "--runtime-cli",              "bls-runtime", 
+      "--private-key",              "/data/keys/priv.bin",
+      "--boot-nodes",               "/dns4/allora-head/tcp/9527/p2p/12D3KooWH9GerdSEroL2nqjpd2GuE5dwmqNi7uHX7FoywBdKcP4q",
+    ]
+
   redis:
     image: redis:latest
     ports:
@@ -50,7 +103,6 @@ services:
 
 networks:
   network:
-
 
 volumes:
   node-logs:
