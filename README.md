@@ -1,5 +1,7 @@
 # infernet-container-starter
 
+![Apache License](https://img.shields.io/badge/Apache%20License-D22128?style=for-the-badge&logo=Apache&logoColor=white)
+
 Starter examples for deploying to infernet.
 
 # Getting Started
