@@ -23,7 +23,6 @@ services:
 
   allora-head:
     image: ghcr.io/allora-network/allora-inference-base_head:latest
-    platform: linux/amd64
     ports:
       - "0.0.0.0:8081:8081"
     networks:
@@ -49,7 +48,6 @@ services:
 
   allora-worker:
     image: ghcr.io/allora-network/allora-inference-base_worker:latest
-    platform: linux/amd64
     networks:
       - network
     restart:
