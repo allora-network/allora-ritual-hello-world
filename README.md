@@ -209,6 +209,6 @@ To learn more about on-chain requests, check out the following resources:
 
 1. [Tutorial](./projects/allora-infernet/contracts/Tutorial.md) on this project's consumer smart contracts.
 2. [Infernet Callback Consumer Tutorial](https://docs.ritual.net/infernet/sdk/consumers/Callback)
-3. [Infernet Nodes Docoumentation](https://docs.ritual.net/infernet/nodes)
+3. [Infernet Nodes Docoumentation](https://docs.ritual.net/infernet/node/introduction)
 
 
