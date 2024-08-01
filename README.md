@@ -19,7 +19,7 @@ is compatible with `infernet`, and simply
 
 We already have it [hosted on docker hub](https://hub.docker.com/r/ritualnetwork/hello-world-infernet) .
 If you're curious how it's made, you can
-follow the instructions [here](projects/hello-world/container/README.md) to build your own infernet-compatible
+follow the instructions [here](projects/allora-infernet/container/README.md) to build your own infernet-compatible
 container.
 
 ### Install Docker
