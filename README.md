@@ -13,9 +13,9 @@ creating a subscription on-chain (we'll refer to this as an on-chain job).
 ## Requesting an off-chain job: Hello World!
 
 The easiest way to get started is to run our hello-world container.
-This is a simple [flask-app](projects/hello-world/container/src/app.py) that
+This is a simple [flask-app](projects/allora-infernet/container/src/app.py) that
 is compatible with `infernet`, and simply
-[echoes what you send to it](./projects/hello-world/container/src/app.py#L16).
+[echoes what you send to it](./projects/allora-infernet/container/src/app.py#L16).
 
 We already have it [hosted on docker hub](https://hub.docker.com/r/ritualnetwork/hello-world-infernet) .
 If you're curious how it's made, you can
@@ -101,8 +101,8 @@ node is running on port `4000`. Same as before.
 
 ### Deploying Consumer Contracts
 
-We have a [sample forge project](./projects/hello-world/contracts) which contains
-a simple consumer contract, [`SaysGM`](./projects/hello-world/contracts/src/SaysGM.sol).
+We have a [sample forge project](./projects/allora-infernet/contracts) which contains
+a simple consumer contract, [`SaysGM`](./projects/allora-infernet/contracts/src/SaysGM.sol).
 All this contract does is to request a job from the infernet node, and upon receiving
 the result, it will use the `forge` console to print the result.
 
@@ -207,7 +207,7 @@ our ritual anvil node.
 
 To learn more about on-chain requests, check out the following resources:
 
-1. [Tutorial](./projects/hello-world/contracts/Tutorial.md) on this project's consumer smart contracts.
+1. [Tutorial](./projects/allora-infernet/contracts/Tutorial.md) on this project's consumer smart contracts.
 2. [Infernet Callback Consumer Tutorial](https://docs.ritual.net/infernet/sdk/consumers/Callback)
 3. [Infernet Nodes Docoumentation](https://docs.ritual.net/infernet/nodes)
 
