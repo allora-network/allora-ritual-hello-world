@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   node:
     image: ritualnetwork/infernet-node:latest
@@ -38,10 +36,10 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     command: [
-      "--port", "9527", 
-      "--peer-db", "/tmp/peerdb", 
-      "--function-db", "/tmp/func-db", 
-      "--role", "head", 
+      "--port", "9527",
+      "--peer-db", "/tmp/peerdb",
+      "--function-db", "/tmp/func-db",
+      "--role", "head",
       "--rest-api", ":8081",
       "--private-key",              "/data/keys/priv.bin",
     ]
@@ -60,13 +58,13 @@ services:
         source: ../testkeys/ident2/
         target: /data/keys
         read_only: true
-    command: [ 
-      "--port",                     "9527", 
-      "--peer-db",                  "/tmp/peerdb", 
-      "--function-db",              "/tmp/func-db", 
-      "--role",                     "worker", 
-      "--runtime-path",             "/app/runtime", 
-      "--runtime-cli",              "bls-runtime", 
+    command: [
+      "--port",                     "9527",
+      "--peer-db",                  "/tmp/peerdb",
+      "--function-db",              "/tmp/func-db",
+      "--role",                     "worker",
+      "--runtime-path",             "/app/runtime",
+      "--runtime-cli",              "bls-runtime",
       "--private-key",              "/data/keys/priv.bin",
       "--boot-nodes",               "/dns4/allora-head/tcp/9527/p2p/12D3KooWH9GerdSEroL2nqjpd2GuE5dwmqNi7uHX7FoywBdKcP4q",
     ]
